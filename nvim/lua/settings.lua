@@ -14,11 +14,11 @@ vim.o.clipboard = 'unnamedplus'
 -- Disable line wrap
 vim.o.wrap = false
 
--- Use 4 spaces for indentation
-vim.o.tabstop = 8
-vim.o.shiftwidth = 4
+-- Indentation
+vim.o.tabstop = 8 -- Set tab characters width to 8 to that I immediately notice when a tab character is inserted
+vim.o.shiftwidth = 2
 vim.o.shiftround = true
-vim.o.expandtab = true
+vim.o.expandtab = true -- Convert tabs to spaces
 
 -- Save undo history
 vim.o.undofile = true
