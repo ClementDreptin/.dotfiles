@@ -2,13 +2,13 @@
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
--- Make line numbers default
+-- Display line numbers
 vim.wo.number = true
 
--- Enable mouse mode
+-- Allow to use the mouse
 vim.o.mouse = 'a'
 
--- Sync clipboard between OS and Neovim.
+-- Sync clipboard between OS and Neovim
 vim.o.clipboard = 'unnamedplus'
 
 -- Disable line wrap
@@ -33,5 +33,4 @@ vim.wo.signcolumn = 'yes'
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
 
--- NOTE: You should make sure your terminal supports this
 vim.o.termguicolors = true
