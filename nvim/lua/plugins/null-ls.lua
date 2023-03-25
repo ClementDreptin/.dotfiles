@@ -9,8 +9,15 @@ return {
       sources = {
         diagnostics.eslint,
         formatting.eslint,
-        formatting.stylua,
+        formatting.stylua.with({
+          extra_args = {
+            '--call-parentheses Always',
+            '--quote-style ForceSingle',
+            '--indent-type Spaces',
+            '--indent-width 2',
+          },
+        }),
       },
     })
-  end
+  end,
 }
