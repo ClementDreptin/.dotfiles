@@ -6,7 +6,7 @@ return {
   dependencies = {
     'nvim-tree/nvim-web-devicons',
   },
-  config = function ()
+  config = function()
     require('nvim-tree').setup({
       view = {
         adaptive_size = true,
@@ -14,19 +14,21 @@ return {
     })
 
     -- Open nvim-tree on startup only if it's a directory
-    vim.api.nvim_create_autocmd({ 'VimEnter' }, { callback = function (data)
-      local is_directory = vim.fn.isdirectory(data.file) == 1
+    vim.api.nvim_create_autocmd({ 'VimEnter' }, {
+      callback = function(data)
+        local is_directory = vim.fn.isdirectory(data.file) == 1
 
-      -- Return early if we're not in a directory
-      if not is_directory then
-        return
+        -- Return early if we're not in a directory
+        if not is_directory then
+          return
+        end
+
+        -- Create a new empty buffer
+        vim.cmd.enew()
+
+        -- Open the tree
+        require('nvim-tree.api').tree.open({ focus = false, find_file = true })
       end
-
-      -- Create a new empty buffer
-      vim.cmd.enew()
-
-      -- Open the tree
-      require('nvim-tree.api').tree.open({ focus = false, find_file = true })
-    end })
+    })
   end
 }

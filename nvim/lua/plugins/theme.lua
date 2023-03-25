@@ -1,6 +1,6 @@
 return {
   'navarasu/onedark.nvim',
-  config = function ()
+  config = function()
     vim.cmd.colorscheme('onedark')
   end,
 }
