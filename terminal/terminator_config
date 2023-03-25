@@ -1,5 +1,6 @@
 [global_config]
   window_state = maximise
+  title_transmit_bg_color = "#3465a4"
   title_use_system_font = False
   title_font = CaskaydiaCove Nerd Font 10
 [keybindings]
