@@ -30,7 +30,22 @@ return {
           vim.api.nvim_create_autocmd('BufWritePre', {
             group = augroup,
             buffer = bufnr,
-            callback = function()
+            callback = function(args)
+              -- Formatting JS/TS on save just works poorly
+              local forbidden_extensions = {
+                '.ts',
+                '.tsx',
+                '.js',
+                '.jsx',
+              }
+
+              for _, ext in pairs(forbidden_extensions) do
+                -- Check if filename ends with extension
+                if args.file:sub(-#ext) == ext then
+                  return
+                end
+              end
+
               vim.lsp.buf.format({ bufnr = bufnr })
             end,
           })
