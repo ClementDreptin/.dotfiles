@@ -1,3 +1,19 @@
+local function format_on_save(client, augroup, bufnr)
+  if not client.supports_method('textDocument/formatting') then
+    return
+  end
+
+  vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+  vim.api.nvim_create_autocmd('BufWritePre', {
+    group = augroup,
+    buffer = bufnr,
+    callback = function()
+      -- ESLint is quite slow, especially as a formatter...
+      vim.lsp.buf.format({ timeout_ms = 10000 })
+    end,
+  })
+end
+
 return {
   'jose-elias-alvarez/null-ls.nvim',
   config = function()
@@ -24,32 +40,7 @@ return {
         }),
       },
       on_attach = function(client, bufnr)
-        -- Format on save
-        if client.supports_method('textDocument/formatting') then
-          vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-          vim.api.nvim_create_autocmd('BufWritePre', {
-            group = augroup,
-            buffer = bufnr,
-            callback = function(args)
-              -- Formatting JS/TS on save just works poorly
-              local forbidden_extensions = {
-                '.ts',
-                '.tsx',
-                '.js',
-                '.jsx',
-              }
-
-              for _, ext in pairs(forbidden_extensions) do
-                -- Check if filename ends with extension
-                if args.file:sub(-#ext) == ext then
-                  return
-                end
-              end
-
-              vim.lsp.buf.format({ bufnr = bufnr })
-            end,
-          })
-        end
+        format_on_save(client, augroup, bufnr)
       end,
     })
   end,
