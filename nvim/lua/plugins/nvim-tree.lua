@@ -28,7 +28,7 @@ return {
 
         -- Open the tree
         require('nvim-tree.api').tree.open({ focus = false, find_file = true })
-      end
+      end,
     })
-  end
+  end,
 }
