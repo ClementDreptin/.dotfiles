@@ -55,10 +55,10 @@
     "defaults": {
       "colorScheme": "Zeonica",
       "font": {
-        "face": "CaskaydiaCove NFM"
+        "face": "CaskaydiaCove Nerd Font"
       },
       "startingDirectory": "D:\\Dev",
-      "useAtlasEngine": true
+      "cursorShape": "filledBox"
     },
     "list": [
       {
