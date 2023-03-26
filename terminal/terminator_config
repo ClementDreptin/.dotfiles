@@ -6,11 +6,11 @@
 [keybindings]
 [profiles]
   [[default]]
-    background_color = "#002b36"
-    cursor_color = "#aaaaaa"
+    background_color = "#01001d"
+    cursor_color = "#bbbbbb"
     font = CaskaydiaCove Nerd Font 11
-    foreground_color = "#babdb6"
-    palette = "#073642:#dc322f:#859900:#b58900:#268bd2:#d33682:#2aa198:#eee8d5:#002b36:#cb4b16:#586e75:#657b83:#839496:#6c71c4:#93a1a1:#fdf6e3"
+    foreground_color = "#ffffff"
+    palette = "#0c0c0c:#cc2929:#21c221:#d6c315:#3e31f5:#d918b9:#13d4d4:#bbbbbb:#686868:#ff6e6e:#6bff6b:#ffff6b:#737cff:#ff70ff:#7fffff:#ffffff"
     use_system_font = False
 [layouts]
   [[default]]
