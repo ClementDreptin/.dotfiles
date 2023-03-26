@@ -1,6 +1,5 @@
 local servers = {
   clangd = {},
-  tsserver = {},
   lua_ls = {
     Lua = {
       workspace = { checkThirdParty = false },
@@ -9,6 +8,11 @@ local servers = {
     },
   },
 }
+
+-- Only install the TypeScript server if NodeJS is installed
+if vim.fn.executable('node') == 1 then
+  servers.tsserver = {}
+end
 
 --  This function gets run when an LSP connects to a particular buffer
 local on_attach = function(_, bufnr)
