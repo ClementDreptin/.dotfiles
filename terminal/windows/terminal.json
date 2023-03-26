@@ -1,115 +1,115 @@
 {
   "$schema": "https://aka.ms/terminal-profiles-schema",
-	"actions": [
-		{
-			"command": {
-				"action": "splitPane",
-				"split": "right"
-			},
-			"keys": "ctrl+shift+e"
-		},
-		{
-			"command": "closePane",
-			"keys": "ctrl+d"
-		},
-		{
-			"command": {
-				"action": "splitPane",
-				"split": "down"
-			},
-			"keys": "ctrl+shift+o"
-		},
-		{
-			"command": {
-				"action": "resizePane",
-				"direction": "left"
-			},
-			"keys": "ctrl+shift+left"
-		},
-		{
-			"command": {
-				"action": "resizePane",
-				"direction": "right"
-			},
-			"keys": "ctrl+shift+right"
-		},
-		{
-			"command": {
-				"action": "resizePane",
-				"direction": "up"
-			},
-			"keys": "ctrl+shift+up"
-		},
-		{
-			"command": {
-				"action": "resizePane",
-				"direction": "down"
-			},
-			"keys": "ctrl+shift+down"
-		}
-	],
-	"defaultProfile": "{9a622536-7c90-5641-b418-6e46d501d9d4}",
-	"language": "en-US",
+  "actions": [
+    {
+      "command": {
+        "action": "splitPane",
+        "split": "right"
+      },
+      "keys": "ctrl+shift+e"
+    },
+    {
+      "command": "closePane",
+      "keys": "ctrl+d"
+    },
+    {
+      "command": {
+        "action": "splitPane",
+        "split": "down"
+      },
+      "keys": "ctrl+shift+o"
+    },
+    {
+      "command": {
+        "action": "resizePane",
+        "direction": "left"
+      },
+      "keys": "ctrl+shift+left"
+    },
+    {
+      "command": {
+        "action": "resizePane",
+        "direction": "right"
+      },
+      "keys": "ctrl+shift+right"
+    },
+    {
+      "command": {
+        "action": "resizePane",
+        "direction": "up"
+      },
+      "keys": "ctrl+shift+up"
+    },
+    {
+      "command": {
+        "action": "resizePane",
+        "direction": "down"
+      },
+      "keys": "ctrl+shift+down"
+    }
+  ],
+  "defaultProfile": "{9a622536-7c90-5641-b418-6e46d501d9d4}",
+  "language": "en-US",
   "launchMode": "maximized",
-	"profiles": {
-		"defaults": {
-			"colorScheme": "Zeonica",
+  "profiles": {
+    "defaults": {
+      "colorScheme": "Zeonica",
       "font": {
         "face": "CaskaydiaCove NFM"
       },
       "startingDirectory": "D:\\Dev",
       "useAtlasEngine": true
-		},
-		"list": [
-			{
-				"commandline": "%SystemRoot%\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
-				"guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
-				"hidden": false,
-				"name": "Windows PowerShell"
-			},
+    },
+    "list": [
+      {
+        "commandline": "%SystemRoot%\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+        "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
+        "hidden": false,
+        "name": "Windows PowerShell"
+      },
       {
         "guid": "{9a622536-7c90-5641-b418-6e46d501d9d4}",
         "hidden": false,
         "name": "Developer PowerShell for VS 2022",
         "source": "Windows.Terminal.VisualStudio"
       },
-			{
-				"commandline": "%SystemRoot%\\System32\\cmd.exe",
-				"guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
-				"hidden": false,
-				"name": "Command Prompt"
-			},
+      {
+        "commandline": "%SystemRoot%\\System32\\cmd.exe",
+        "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
+        "hidden": false,
+        "name": "Command Prompt"
+      },
       {
         "guid": "{70862607-9f8b-532d-9d39-b117ffd1b9a5}",
         "hidden": false,
         "name": "Developer Command Prompt for VS 2022",
         "source": "Windows.Terminal.VisualStudio"
       }
-		]
-	},
-	"schemes": [
-		{
-			"background": "#01001D",
-			"black": "#0C0C0C",
-			"blue": "#3E31F5",
-			"brightBlack": "#686868",
-			"brightBlue": "#737CFF",
-			"brightCyan": "#7FFFFF",
-			"brightGreen": "#6BFF6B",
-			"brightPurple": "#FF70FF",
-			"brightRed": "#FF6E6E",
-			"brightWhite": "#FFFFFF",
-			"brightYellow": "#FFFF6B",
-			"cursorColor": "#FFFFFF",
-			"cyan": "#13D4D4",
-			"foreground": "#FFFFFF",
-			"green": "#21C221",
-			"name": "Zeonica",
-			"purple": "#D918B9",
-			"red": "#CC2929",
-			"selectionBackground": "#242272",
-			"white": "#B2B2B2",
-			"yellow": "#D6C315"
-		}
-	]
+    ]
+  },
+  "schemes": [
+    {
+      "background": "#01001D",
+      "black": "#0C0C0C",
+      "blue": "#3E31F5",
+      "brightBlack": "#686868",
+      "brightBlue": "#737CFF",
+      "brightCyan": "#7FFFFF",
+      "brightGreen": "#6BFF6B",
+      "brightPurple": "#FF70FF",
+      "brightRed": "#FF6E6E",
+      "brightWhite": "#FFFFFF",
+      "brightYellow": "#FFFF6B",
+      "cursorColor": "#FFFFFF",
+      "cyan": "#13D4D4",
+      "foreground": "#FFFFFF",
+      "green": "#21C221",
+      "name": "Zeonica",
+      "purple": "#D918B9",
+      "red": "#CC2929",
+      "selectionBackground": "#242272",
+      "white": "#B2B2B2",
+      "yellow": "#D6C315"
+    }
+  ]
 }
