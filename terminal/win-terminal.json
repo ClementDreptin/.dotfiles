@@ -1,0 +1,68 @@
+{
+	"actions": [
+		{
+			"command": {
+				"action": "splitPane",
+				"split": "right"
+			},
+			"keys": "ctrl+shift+e"
+		},
+		{
+			"command": "closePane",
+			"keys": "ctrl+d"
+		},
+		{
+			"command": {
+				"action": "splitPane",
+				"split": "down"
+			},
+			"keys": "ctrl+shift+o"
+		}
+	],
+	"defaultProfile": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
+	"language": "en-US",
+	"profiles": {
+		"defaults": {
+			"colorScheme": "Zeonica"
+		},
+		"list": [
+			{
+				"commandline": "%SystemRoot%\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+				"guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
+				"hidden": false,
+				"name": "Windows PowerShell"
+			},
+			{
+				"commandline": "%SystemRoot%\\System32\\cmd.exe",
+				"guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
+				"hidden": false,
+				"name": "Command Prompt"
+			}
+		]
+	},
+	"schemes": [
+		{
+			"background": "#01001D",
+			"black": "#0C0C0C",
+			"blue": "#3E31F5",
+			"brightBlack": "#686868",
+			"brightBlue": "#737CFF",
+			"brightCyan": "#7FFFFF",
+			"brightGreen": "#6BFF6B",
+			"brightPurple": "#FF70FF",
+			"brightRed": "#FF6E6E",
+			"brightWhite": "#FFFFFF",
+			"brightYellow": "#FFFF6B",
+			"cursorColor": "#FFFFFF",
+			"cyan": "#13D4D4",
+			"foreground": "#FFFFFF",
+			"green": "#21C221",
+			"name": "Zeonica",
+			"purple": "#D918B9",
+			"red": "#CC2929",
+			"selectionBackground": "#242272",
+			"white": "#B2B2B2",
+			"yellow": "#D6C315"
+		}
+	]
+}
