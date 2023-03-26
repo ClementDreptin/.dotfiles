@@ -20,7 +20,7 @@
 			"keys": "ctrl+shift+o"
 		}
 	],
-	"defaultProfile": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
+	"defaultProfile": "{9a622536-7c90-5641-b418-6e46d501d9d4}",
 	"language": "en-US",
   "launchMode": "maximized",
 	"profiles": {
@@ -29,6 +29,7 @@
       "font": {
         "face": "CaskaydiaCove NFM"
       },
+      "startingDirectory": "D:\\Dev",
       "useAtlasEngine": true
 		},
 		"list": [
@@ -38,12 +39,24 @@
 				"hidden": false,
 				"name": "Windows PowerShell"
 			},
+      {
+        "guid": "{9a622536-7c90-5641-b418-6e46d501d9d4}",
+        "hidden": false,
+        "name": "Developer PowerShell for VS 2022",
+        "source": "Windows.Terminal.VisualStudio"
+      },
 			{
 				"commandline": "%SystemRoot%\\System32\\cmd.exe",
 				"guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
 				"hidden": false,
 				"name": "Command Prompt"
-			}
+			},
+      {
+        "guid": "{70862607-9f8b-532d-9d39-b117ffd1b9a5}",
+        "hidden": false,
+        "name": "Developer Command Prompt for VS 2022",
+        "source": "Windows.Terminal.VisualStudio"
+      }
 		]
 	},
 	"schemes": [
