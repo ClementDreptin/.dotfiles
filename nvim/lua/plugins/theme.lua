@@ -1,6 +1,11 @@
 return {
-  'navarasu/onedark.nvim',
+  'catppuccin/nvim',
+  name = 'catppuccin',
   config = function()
-    vim.cmd.colorscheme('onedark')
+    require('catppuccin').setup({
+      no_italic = true,
+    })
+
+    vim.cmd.colorscheme('catppuccin')
   end,
 }
