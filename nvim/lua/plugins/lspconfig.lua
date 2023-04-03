@@ -15,7 +15,12 @@ if vim.fn.executable('node') == 1 then
 end
 
 --  This function gets run when an LSP connects to a particular buffer
-local on_attach = function(_, bufnr)
+local on_attach = function(client, bufnr)
+  -- The formatting that comes with typescript-language-server tends to be buggy...
+  if client.name == 'tsserver' then
+    client.server_capabilities.documentFormattingProvider = false
+  end
+
   local nmap = function(keys, func, desc)
     if desc then
       desc = 'LSP: ' .. desc
