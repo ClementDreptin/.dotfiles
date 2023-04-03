@@ -7,6 +7,6 @@ module.exports = {
   rules: {
     semi: ['error', 'always'],
     'no-extra-semi': 'error',
-    'comma-dangle': ['error', 'always'],
+    'comma-dangle': ['error', 'always-multiline'],
   },
 };
