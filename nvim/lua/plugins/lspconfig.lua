@@ -9,9 +9,11 @@ local servers = {
   },
 }
 
--- Only install the TypeScript server if NodeJS is installed
+-- Only install the Web related servers if NodeJS is installed
 if vim.fn.executable('node') == 1 then
   servers.tsserver = {}
+  servers.html = {}
+  servers.cssls = {}
 end
 
 --  This function gets run when an LSP connects to a particular buffer
