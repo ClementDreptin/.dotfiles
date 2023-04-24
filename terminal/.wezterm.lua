@@ -35,28 +35,26 @@ config.keys = {
     mods = 'CTRL|SHIFT',
     action = wezterm.action.SpawnTab('CurrentPaneDomain'),
   },
+}
+
+-- Generate keybindings that use the arrow keys
+local directions = { 'Left', 'Right', 'Up', 'Down' }
+for _, direction in pairs(directions) do
+  local keyname = direction .. 'Arrow'
 
   -- Resize pane
-  {
-    key = 'LeftArrow',
+  table.insert(config.keys, {
+    key = keyname,
     mods = 'CTRL|SHIFT',
-    action = wezterm.action.AdjustPaneSize({ 'Left', 2 }),
-  },
-  {
-    key = 'RightArrow',
-    mods = 'CTRL|SHIFT',
-    action = wezterm.action.AdjustPaneSize({ 'Right', 2 }),
-  },
-  {
-    key = 'UpArrow',
-    mods = 'CTRL|SHIFT',
-    action = wezterm.action.AdjustPaneSize({ 'Up', 1 }),
-  },
-  {
-    key = 'DownArrow',
-    mods = 'CTRL|SHIFT',
-    action = wezterm.action.AdjustPaneSize({ 'Down', 1 }),
-  },
-}
+    action = wezterm.action.AdjustPaneSize({ direction, 1 }),
+  })
+
+  -- Switch pane
+  table.insert(config.keys, {
+    key = keyname,
+    mods = 'ALT',
+    action = wezterm.action.ActivatePaneDirection(direction),
+  })
+end
 
 return config
