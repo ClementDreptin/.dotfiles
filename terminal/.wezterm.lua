@@ -9,6 +9,13 @@ end
 -- Set the font
 config.font = wezterm.font('Fira Code')
 
+-- Colors
+config.colors = {
+  background = '#1E1E2E', -- base catppuccin mocha color
+  cursor_bg = 'silver',
+  cursor_border = 'silver',
+}
+
 -- Maximize the window on startup
 wezterm.on('gui-startup', function(cmd)
   local _, _, window = wezterm.mux.spawn_window(cmd or {})
