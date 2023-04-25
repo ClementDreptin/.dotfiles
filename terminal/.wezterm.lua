@@ -62,6 +62,16 @@ for _, direction in pairs(directions) do
     mods = 'ALT',
     action = wezterm.action.ActivatePaneDirection(direction),
   })
+
+  -- Switch tabs but only for left and right
+  if direction == 'Left' or direction == 'Right' then
+    local index = direction == 'Left' and -1 or 1
+    table.insert(config.keys, {
+      key = keyname,
+      mods = 'CTRL',
+      action = wezterm.action.ActivateTabRelativeNoWrap(index),
+    })
+  end
 end
 
 -- Windows specific config
