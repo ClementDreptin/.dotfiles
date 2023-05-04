@@ -68,7 +68,7 @@ for _, direction in pairs(directions) do
     local index = direction == 'Left' and -1 or 1
     table.insert(config.keys, {
       key = keyname,
-      mods = 'CTRL',
+      mods = 'ALT|SHIFT',
       action = wezterm.action.ActivateTabRelativeNoWrap(index),
     })
   end
