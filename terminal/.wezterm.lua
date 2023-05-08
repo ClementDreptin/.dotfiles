@@ -74,18 +74,4 @@ for _, direction in pairs(directions) do
   end
 end
 
--- Windows specific config
-if wezterm.target_triple == 'x86_64-pc-windows-msvc' then
-  -- Start PowerShell in D:\Dev
-  config.default_prog = { 'powershell.exe', '-NoLogo' }
-  config.default_cwd = 'D:\\Dev'
-
-  -- Replicate the CTRL+D behavior of Linux shells
-  table.insert(config.keys, {
-    key = 'd',
-    mods = 'CTRL',
-    action = wezterm.action.CloseCurrentPane({ confirm = true }),
-  })
-end
-
 return config
