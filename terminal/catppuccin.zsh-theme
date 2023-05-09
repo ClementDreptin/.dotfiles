@@ -36,20 +36,14 @@ directory() {
   FG="$CRUST"
   BG="$LAVENDER"
 
-  if in_git_repo; then
-    NEXT_BG="$RED"
-  else
-    NEXT_BG="$TRANSPARENT"
-  fi
+  in_git_repo && NEXT_BG="$RED" || NEXT_BG="$TRANSPARENT"
 
   CONTENT="%2~"
   echo "$(segment)"
 }
 
 git_prompt() {
-  if ! in_git_repo; then
-    return
-  fi
+  ! in_git_repo && return
 
   FG="$CRUST"
   BG="$RED"
