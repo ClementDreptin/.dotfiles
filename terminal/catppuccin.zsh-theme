@@ -54,8 +54,13 @@ git_prompt() {
   FG="$CRUST"
   BG="$RED"
   NEXT_BG="$TRANSPARENT"
+  local local_status=$(git_prompt_status)
+  local remote_status=$(git_remote_status)
 
-  CONTENT="$BRANCH $(git_current_branch) $(git_prompt_status) $(git_remote_status)"
+  CONTENT="$BRANCH $(git_current_branch)"
+  [ -n "$local_status" ] && CONTENT+=" $local_status"
+  [ -n "$remote_status" ] && CONTENT+=" $remote_status"
+
   echo "$(segment)"
 }
 
