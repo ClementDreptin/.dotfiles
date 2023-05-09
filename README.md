@@ -1,4 +1,4 @@
-# dot-files
+# .dotfiles
 This repository contains most of the config files I use.
 
 Included:
