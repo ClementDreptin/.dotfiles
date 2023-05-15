@@ -5,4 +5,4 @@ Included:
 - [Neovim](./nvim/)
 - [C/C++ linter and formatter](./c-cpp/)
 - [JavaScript/TypeScript linter and formatter](./js/)
-- [Terminal (WezTerm / ZSH / PowerShell)](./terminal/)
+- [Terminal (WezTerm / ZSH)](./terminal/)
