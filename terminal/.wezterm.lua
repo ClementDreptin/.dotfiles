@@ -7,7 +7,7 @@ if wezterm.config_builder then
 end
 
 -- Set the font
-config.font = wezterm.font('Fira Code')
+config.font = wezterm.font('FiraCode Nerd Font')
 
 -- Colors
 config.colors = {
