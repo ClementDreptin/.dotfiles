@@ -15,3 +15,7 @@ source $ZSH/oh-my-zsh.sh
 
 # If .profile is present, source it
 [[ -e $HOME/.profile ]] && emulate sh -c 'source $HOME/.profile'
+
+# Make neovim the default text editor on the system
+export VISUAL="nvim"
+export EDITOR="$VISUAL"
