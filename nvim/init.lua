@@ -45,3 +45,6 @@ require("lazy").setup({
     },
   },
 })
+
+-- Options
+vim.opt.number = true -- line numbers
