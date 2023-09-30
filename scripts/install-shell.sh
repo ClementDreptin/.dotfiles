@@ -19,7 +19,8 @@ if [ ! -d $ZSH_HOME ]; then
   echo "$zshrc_src --> $zshrc_dest"
   ln -s $zshrc_src $zshrc_dest
 
-  # Install oh-my-zsh without overwriting our .zshrc
+  # Install oh-my-zsh without overwriting our .zshrc,
+  # we don't run it immediately because the plugins are not installed yet
   export KEEP_ZSHRC=yes
   export RUNZSH=no
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
