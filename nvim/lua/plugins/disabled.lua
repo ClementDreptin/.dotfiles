@@ -10,6 +10,7 @@ local to_disable = {
   "dstein64/vim-startuptime",
   "lukas-reineke/indent-blankline.nvim",
   "folke/persistence.nvim",
+  "folke/flash.nvim",
 }
 
 for _, plugin in pairs(to_disable) do
