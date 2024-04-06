@@ -2,6 +2,8 @@ local M = {}
 
 local to_disable = {
   "goolord/alpha-nvim",
+  "nvimdev/dashboard-nvim",
+  "echasnovski/mini.starter",
   "stevearc/dressing.nvim",
   "rafamadriz/friendly-snippets",
   "ggandor/leap.nvim",
