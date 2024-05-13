@@ -10,6 +10,10 @@ CASE_SENSITIVE="true"
 # Plugins can be found in $ZSH/plugins/
 plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
 
+# Temporary fix to get the git prompt back
+# https://github.com/ohmyzsh/ohmyzsh?tab=readme-ov-file#disable-async-git-prompt
+zstyle ':omz:alpha:lib:git' async-prompt no
+
 # Run the basic oh-my-zsh script
 source $ZSH/oh-my-zsh.sh
 
