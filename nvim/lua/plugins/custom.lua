@@ -60,6 +60,7 @@ return {
     },
   },
 
+  -- Disable inlay hints
   {
     "nvim-lspconfig",
     opts = {
