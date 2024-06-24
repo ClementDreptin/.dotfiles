@@ -7,6 +7,7 @@ local servers = {
   },
   tsserver = {},
   eslint = {},
+  jsonls = {},
 }
 
 -- All the config needed to make LSPs talk with the LSP client in Neovim
@@ -33,6 +34,11 @@ local lsp_config = {
         "<leader>cd",
         vim.diagnostic.open_float,
         desc = "Line diagnostics",
+      },
+      {
+        "<leader>K",
+        vim.lsp.buf.hover,
+        desc = "Hover",
       },
       {
         "<leader>gd",
