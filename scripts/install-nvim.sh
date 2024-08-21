@@ -14,32 +14,27 @@ if [ ! -d $USER_BIN_DIR ]; then
   mkdir -p $USER_BIN_DIR
 fi
 
-# Install the Neovim binary if needed
-if [ ! -f $NVIM_BIN ]; then
-  # Install libfuse2 if needed (required to run AppImages)
-  dpkg -s libfuse2 >/dev/null 2>&1
-  if [ ! $? -eq 0 ]; then
-    echo "libfuse2 is required to run AppImages and was not found, installing..."
-    sudo apt install libfuse2
-  fi
-
-  # Download Neovim binary from GitHub and make it executable
-  echo "Neovim binary not found, installing..."
-  curl -Lo $NVIM_BIN https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
-  chmod u+x $NVIM_BIN
+# Install libfuse2 if needed (required to run AppImages)
+dpkg -s libfuse2 >/dev/null 2>&1
+if [ ! $? -eq 0 ]; then
+  echo "libfuse2 is required to run AppImages and was not found, installing..."
+  sudo apt install libfuse2
 fi
 
-# Install Neovim config if needed
-if [ ! -d $NVIM_CFG ]; then
-  echo "Installing Neovim config..."
+# Download Neovim binary from GitHub and make it executable
+echo "Installing Neovim..."
+curl -Lo $NVIM_BIN https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
+chmod u+x $NVIM_BIN
 
-  # Create the user config directory if needed
-  if [ ! -d $USER_CFG ]; then
-    mkdir -p $USER_CFG
-  fi
+echo "Installing Neovim config..."
 
-  ln -s $GIT_DIR/nvim $NVIM_CFG
+# Create the user config directory if needed
+if [ ! -d $USER_CFG ]; then
+  mkdir -p $USER_CFG
 fi
+
+# Install Neovim config (symlink the config from the repo to right place)
+ln -sfn $GIT_DIR/nvim $NVIM_CFG
 
 # Install the Neovim plugins' system dependencies if needed
 deps=(ripgrep build-essential zip)
