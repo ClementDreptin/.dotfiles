@@ -27,3 +27,6 @@ export EDITOR="$VISUAL"
 # Setup the volta environment
 export VOLTA_HOME=$HOME/.volta
 export PATH=$VOLTA_HOME/bin:$PATH
+
+# Load the cargo environment variable for Rust
+. "$HOME/.cargo/env"
