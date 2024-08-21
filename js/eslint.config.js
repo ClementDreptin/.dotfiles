@@ -1,18 +1,13 @@
-import { FlatCompat } from "@eslint/eslintrc";
 import eslint from "@eslint/js";
-import prettierConfig from "eslint-config-prettier";
-import standardConfig from "eslint-config-standard";
+import neostandard from "neostandard";
 import tseslint from "typescript-eslint";
-
-const compat = new FlatCompat();
 
 export default tseslint.config(
   // Base
   eslint.configs.recommended,
 
   // Standard
-  // necessary to transform to flat config until the npm packages are updated
-  ...compat.config(standardConfig),
+  ...neostandard({ noStyle: true }),
 
   // TypeScript
   ...tseslint.configs.strictTypeChecked,
@@ -48,9 +43,6 @@ export default tseslint.config(
       ],
     },
   },
-
-  // Prettier
-  prettierConfig,
 
   // Disable type-aware linting for config files
   {
