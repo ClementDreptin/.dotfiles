@@ -48,16 +48,3 @@ for dep in ${deps[@]}; do
     sudo apt install $dep
   fi
 done
-
-# Install lazygit if needed
-lazygit --version >/dev/null 2>&1
-if [ ! $? -eq 0 ]; then
-  echo "lazygit is not installed, installing..."
-
-  lazygit_version=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]*')
-  lazygit_tar=lazygit.tar.gz
-  curl -Lo $lazygit_tar "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${lazygit_version}_Linux_x86_64.tar.gz"
-  tar xf $lazygit_tar lazygit
-  rm $lazygit_tar
-  mv lazygit $USER_BIN_DIR/lazygit
-fi
