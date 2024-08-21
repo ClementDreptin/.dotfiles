@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 GIT_DIR="$(git rev-parse --show-toplevel)"
 ZSH_HOME=$HOME/.oh-my-zsh
 ZSH_CUSTOM=$ZSH_HOME/custom

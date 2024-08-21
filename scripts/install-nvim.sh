@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 GIT_DIR="$(git rev-parse --show-toplevel)"
 USER_BIN_DIR=$HOME/.local/bin
 USER_CFG=$HOME/.config

@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 # Install volta if needed
 if [ ! -f "$HOME/.volta/bin/volta" ]; then
   echo "Volta is not installed, installing..."
