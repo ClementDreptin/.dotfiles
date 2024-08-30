@@ -3,8 +3,8 @@
 set -e
 
 GIT_DIR="$(git rev-parse --show-toplevel)"
-ZSH_HOME=$HOME/.oh-my-zsh
-ZSH_CUSTOM=$ZSH_HOME/custom
+OMZ_DIR=$HOME/.oh-my-zsh
+OMZ_CUSTOM_DIR=$OMZ_DIR/custom
 
 echo "Installing zsh (apt)..."
 sudo apt install zsh
@@ -17,9 +17,9 @@ echo "$zshrc_src --> $zshrc_dest"
 ln -sf $zshrc_src $zshrc_dest
 
 # Remove oh-my-zsh directory if it already exists
-if [ -d $ZSH_HOME ]; then
+if [ -d $OMZ_DIR ]; then
   echo "oh-my-zsh already installed, removing old version..."
-  rm -rf $ZSH_HOME
+  rm -rf $OMZ_DIR
 fi
 
 # Install oh-my-zsh without overwriting our .zshrc,
@@ -30,7 +30,7 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 
 # Install our custom catppuccin theme
 catppuccin_theme_src=$GIT_DIR/terminal/catppuccin.zsh-theme
-catppuccin_theme_dest=$ZSH_CUSTOM/themes/catppuccin.zsh-theme
+catppuccin_theme_dest=$OMZ_CUSTOM_DIR/themes/catppuccin.zsh-theme
 echo "Installing catppuccin theme..."
 echo "$catppuccin_theme_src --> $catppuccin_theme_dest"
 ln -sf $catppuccin_theme_src $catppuccin_theme_dest
@@ -38,7 +38,7 @@ ln -sf $catppuccin_theme_src $catppuccin_theme_dest
 # Install plugins if needed
 plugins=(zsh-autosuggestions zsh-syntax-highlighting)
 for plugin in ${plugins[@]}; do
-  plugin_path=$ZSH_CUSTOM/plugins/$plugin
+  plugin_path=$OMZ_CUSTOM_DIR/plugins/$plugin
   if [ ! -d $plugin_path ]; then
     echo "Installing $plugin..."
     git clone https://github.com/zsh-users/$plugin $plugin_path

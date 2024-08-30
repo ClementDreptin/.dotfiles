@@ -9,19 +9,7 @@ KITTY_CONF_DIR=$HOME/.config/kitty
 DESKTOP_INTG_DIR=$HOME/.local/share/applications
 FONT_NAME=JetBrainsMono
 FONT_FILE_NAME=$FONT_NAME.zip
-FONT_DIR=$HOME/.local/share/fonts
-
-# Create the user's private bin directory if needed
-if [ ! -d $USER_BIN_DIR ]; then
-  echo "Private bin directory ($USER_BIN_DIR) not found, creating..."
-  mkdir -p $USER_BIN_DIR
-fi
-
-# Create the user's private font directory if needed
-if [ ! -d $FONT_DIR ]; then
-  echo "Local font directory ($FONT_DIR) not found, creating..."
-  mkdir -p $FONT_DIR
-fi
+USER_FONT_DIR=$HOME/.local/share/fonts
 
 echo "Installing kitty..."
 curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin \
@@ -48,6 +36,6 @@ kitten themes Catppuccin-Mocha
 
 echo "Installing font..."
 curl -L https://github.com/ryanoasis/nerd-fonts/releases/latest/download/$FONT_FILE_NAME -o /tmp/$FONT_FILE_NAME
-unzip /tmp/$FONT_FILE_NAME -d $FONT_DIR/$FONT_NAME
+unzip /tmp/$FONT_FILE_NAME -d $USER_FONT_DIR/$FONT_NAME
 rm /tmp/$FONT_FILE_NAME
 fc-cache -f -v

@@ -4,12 +4,6 @@ set -e
 
 USER_BIN_DIR=$HOME/.local/bin
 
-# Create the user's private bin directory if needed
-if [ ! -d $USER_BIN_DIR ]; then
-  echo "Private bin directory ($USER_BIN_DIR) not found, creating..."
-  mkdir -p $USER_BIN_DIR
-fi
-
 echo "Installing lazygit..."
 
 # Download the latest lazygit binary from GitHub and put it in the user's private bin directory
