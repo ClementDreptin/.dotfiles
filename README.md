@@ -15,6 +15,7 @@ Scripts **HAVE** to be run in this order
 
 - [sys-deps.sh](./scripts/sys-deps.sh)
 - [create-dirs.sh](./scripts/create-dirs.sh)
+- [docker.sh](./scripts/docker.sh)
 - [shell.sh](./scripts/shell.sh)
 - [kitty.sh](./scripts/kitty.sh)
 - [node.sh](./scripts/node.sh)
