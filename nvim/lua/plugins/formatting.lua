@@ -14,6 +14,7 @@ local conform = {
       html = { "prettierd" },
       css = { "prettierd" },
       json = { "prettierd" },
+      jsonc = { "prettierd" },
       yaml = { "prettierd" },
       markdown = { "prettierd" },
     },
