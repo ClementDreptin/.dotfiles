@@ -1,0 +1,21 @@
+# Theme
+theme = catppuccin-mocha
+
+# Font
+font-family = JetBrainsMono Nerd Font
+font-size = 14
+
+# Cursor
+cursor-style = block
+shell-integration-features = no-cursor
+
+# There is no maximize option so we just set the window
+# width and height to something very high
+window-width = 9999
+window-height = 9999
+
+# Keybindings
+keybind = shift+alt+left=goto_split:left
+keybind = shift+alt+right=goto_split:right
+keybind = shift+alt+up=goto_split:top
+keybind = shift+alt+down=goto_split:bottom
