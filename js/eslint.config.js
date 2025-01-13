@@ -46,7 +46,7 @@ export default tseslint.config(
 
   // Disable type-aware linting for config files
   {
-    files: ["*.config.[j|t]s"],
+    files: ["*.config.{js,ts,mjs}"],
     extends: [tseslint.configs.disableTypeChecked],
   },
 );
