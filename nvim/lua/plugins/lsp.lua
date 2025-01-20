@@ -7,13 +7,6 @@ local servers = {
   },
   tsserver = {},
   jsonls = {},
-  rust_analyzer = {
-    ["rust-analyzer"] = {
-      checkOnSave = {
-        command = "clippy",
-      },
-    },
-  },
 }
 
 -- All the config needed to make LSPs talk with the LSP client in Neovim
