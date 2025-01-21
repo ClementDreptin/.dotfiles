@@ -19,6 +19,5 @@ Scripts **HAVE** to be run in this order
 - [shell.sh](./scripts/shell.sh)
 - [ghostty.sh](./scripts/ghostty.sh)
 - [node.sh](./scripts/node.sh)
-- [rust.sh](./scripts/rust.sh)
 - [lazygit.sh](./scripts/lazygit.sh)
 - [nvim.sh](./scripts/nvim.sh)
