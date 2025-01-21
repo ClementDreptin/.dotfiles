@@ -18,7 +18,7 @@ zstyle ':omz:alpha:lib:git' async-prompt no
 source $ZSH/oh-my-zsh.sh
 
 # If .profile is present, source it
-[[ -e $HOME/.profile ]] && emulate sh -c 'source $HOME/.profile'
+[[ -e $HOME/.profile ]] && source $HOME/.profile
 
 # Make neovim the default text editor on the system
 export VISUAL="nvim"
@@ -33,3 +33,8 @@ export PATH=$VOLTA_HOME/bin:$PATH
 
 # Needed to make eslint_d work with ESLint v9
 export ESLINT_USE_FLAT_CONFIG=true
+
+# Source kubectl completions
+if [ -x "$(command -v kubectl)" ]; then
+  source <(kubectl completion zsh)
+fi
