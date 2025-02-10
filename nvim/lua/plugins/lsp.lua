@@ -7,6 +7,14 @@ local servers = {
   },
   tsserver = {},
   jsonls = {},
+  helm_ls = {
+    ["helm-ls"] = {
+      yamlls = {
+        path = "yaml-language-server",
+      },
+    },
+  },
+  yamlls = {},
 }
 
 -- All the config needed to make LSPs talk with the LSP client in Neovim

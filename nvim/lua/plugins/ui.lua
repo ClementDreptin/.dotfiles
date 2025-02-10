@@ -95,6 +95,10 @@ local lualine = {
 local treesitter = {
   "nvim-treesitter/nvim-treesitter",
   build = ":TSUpdate",
+  dependencies = {
+    -- Helm syntax highlighting
+    { "towolf/vim-helm", ft = "helm" },
+  },
   opts = {
     auto_install = true, -- Automatically install a parser when a new file type is encountered
     highlight = { enable = true },
