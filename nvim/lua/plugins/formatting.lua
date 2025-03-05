@@ -29,10 +29,9 @@ local conform = {
 -- because the ensure_installed option from mason-lspconfig only supports LSPs
 local mason_tool_installer = {
   "WhoIsSethDaniel/mason-tool-installer.nvim",
-  config = function(_, opts)
-    vim.list_extend(opts.ensure_installed, { "prettierd", "stylua" })
-    require("mason-tool-installer").setup(opts)
-  end,
+  opts = {
+    ensure_installed = { "prettierd", "stylua" },
+  },
 }
 
 return {

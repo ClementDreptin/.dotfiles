@@ -1,16 +1,31 @@
 local servers = {
   lua_ls = {
-    Lua = {
-      workspace = { checkThirdParty = false },
-      telemetry = { enable = false },
+    settings = {
+      Lua = {
+        workspace = { checkThirdParty = false },
+        telemetry = { enable = false },
+      },
+    },
+  },
+  eslint = {
+    flags = {
+      allow_incremental_sync = false,
+      debounce_text_changes = 1000,
+    },
+    settings = {
+      -- Make eslint find the config file when it's placed in a subdirectory, useful for monorepos
+      workingDirectories = { mode = "auto" },
+      format = false,
     },
   },
   tsserver = {},
   jsonls = {},
   helm_ls = {
-    ["helm-ls"] = {
-      yamlls = {
-        path = "yaml-language-server",
+    settings = {
+      ["helm-ls"] = {
+        yamlls = {
+          path = "yaml-language-server",
+        },
       },
     },
   },
@@ -77,10 +92,8 @@ local lsp_config = {
       -- For each LSP listed at the top of the file, call the its setup function
       -- with its settings and the completion capabilities of cmp-nvim-lsp
       for server, server_opts in pairs(servers) do
-        require("lspconfig")[server].setup({
-          capabilities = capabilities,
-          settings = server_opts,
-        })
+        server_opts.capabilities = capabilities
+        require("lspconfig")[server].setup(server_opts)
       end
     end,
   },
