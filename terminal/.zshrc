@@ -28,8 +28,10 @@ export EDITOR="$VISUAL"
 export VOLTA_HOME=$HOME/.volta
 export PATH=$VOLTA_HOME/bin:$PATH
 
-# Needed to make eslint_d work with ESLint v9
-export ESLINT_USE_FLAT_CONFIG=true
+# Set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/.local/bin" ]; then
+  PATH="$HOME/.local/bin:$PATH"
+fi
 
 # Source kubectl completions
 if [ -x "$(command -v kubectl)" ]; then
