@@ -26,3 +26,12 @@ opt.wrap = false
 -- Search settings
 opt.ignorecase = true -- Ignore case when searching
 opt.smartcase = true -- If the search includes a mixed case, assume the search to be case-sensitive
+
+-- Enable line wrapping and spell check but only for markdown files
+vim.api.nvim_create_autocmd("BufEnter", {
+  pattern = { "*.md" },
+  callback = function()
+    opt.wrap = true
+    opt.spell = true
+  end,
+})
