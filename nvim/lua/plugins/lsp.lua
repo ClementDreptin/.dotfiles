@@ -18,7 +18,7 @@ local servers = {
       format = false,
     },
   },
-  tsserver = {},
+  ts_ls = {},
   jsonls = {},
   helm_ls = {
     settings = {
