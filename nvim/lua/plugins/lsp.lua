@@ -36,15 +36,19 @@ local servers = {
 local lsp_config = {
   -- mason is the LSP/formatter/linter/debugger manager
   {
-    "williamboman/mason.nvim",
+    "mason-org/mason.nvim",
     opts = {},
   },
 
   -- mason-lspconfig bridges the gap between mason and nvim-lspconfig
   {
-    "williamboman/mason-lspconfig.nvim",
+    "mason-org/mason-lspconfig.nvim",
     opts = {
       ensure_installed = vim.tbl_keys(servers),
+    },
+    dependencies = {
+      { "mason-org/mason.nvim", opts = {} },
+      "neovim/nvim-lspconfig",
     },
   },
 
@@ -93,7 +97,7 @@ local lsp_config = {
       -- with its settings and the completion capabilities of cmp-nvim-lsp
       for server, server_opts in pairs(servers) do
         server_opts.capabilities = capabilities
-        require("lspconfig")[server].setup(server_opts)
+        vim.lsp.config(server, server_opts)
       end
     end,
   },
