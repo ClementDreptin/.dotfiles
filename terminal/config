@@ -1,18 +1,15 @@
 # Theme
-theme = catppuccin-mocha
+theme = Catppuccin Mocha
 
 # Font
 font-family = JetBrainsMono Nerd Font
-font-size = 14
 
 # Cursor
 cursor-style = block
 shell-integration-features = no-cursor
 
-# There is no maximize option so we just set the window
-# width and height to something very high
-window-width = 9999
-window-height = 9999
+# Window size
+maximize = true
 
 # Keybindings
 
