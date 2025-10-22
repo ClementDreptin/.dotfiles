@@ -1,3 +1,6 @@
+-- Setting to control whether format on save is on or off
+vim.g.format_on_save = true
+
 -- conform will run a formatter based on the detected file type. conform is a replacement
 -- for the formatting part of null-ls/none-ls
 local conform = {
@@ -18,12 +21,31 @@ local conform = {
       yaml = { "prettierd" },
       markdown = { "prettierd" },
     },
-    format_on_save = {
-      lsp_fallback = true, -- Use the lsp formatter if the file type doesn't match any of the above
-      async = false,
-    },
+    format_on_save = function(bufnr)
+      -- Don't format if setting is disabled
+      if not vim.g.format_on_save then
+        return
+      end
+
+      -- Never run formatter in node_modules
+      local bufname = vim.api.nvim_buf_get_name(bufnr)
+      if bufname:match("/node_modules/") then
+        return
+      end
+
+      return {
+        lsp_format = "fallback", -- Use the lsp formatter if the file type doesn't match any of the above
+      }
+    end,
   },
 }
+
+-- Command to toggle format on save
+vim.api.nvim_create_user_command("ToggleFormatOnSave", function()
+  vim.g.format_on_save = not vim.g.format_on_save
+end, {
+  desc = "Toggle format on save",
+})
 
 -- mason-tool-installer makes sure tools referenced in mason are installed. This plugin is needed
 -- because the ensure_installed option from mason-lspconfig only supports LSPs
