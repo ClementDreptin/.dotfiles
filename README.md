@@ -1,6 +1,6 @@
 # .dotfiles
 
-This repository contains most of the config files I use and some scripts to quickly bootstap a development environment.
+This repository contains most of the config files I use and some scripts to quickly bootstrap a development environment.
 
 ## Configs
 
