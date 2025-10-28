@@ -37,3 +37,6 @@ fi
 if [ -x "$(command -v kubectl)" ]; then
   source <(kubectl completion zsh)
 fi
+
+# Add Golang binary to path
+export PATH="$PATH:/usr/local/go/bin"
