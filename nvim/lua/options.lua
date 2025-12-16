@@ -31,7 +31,6 @@ opt.smartcase = true -- If the search includes a mixed case, assume the search t
 local markdown_options = {
   "wrap",
   "linebreak",
-  "spell",
 }
 vim.api.nvim_create_autocmd("BufEnter", {
   pattern = { "*.md" },
