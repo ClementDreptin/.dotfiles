@@ -112,6 +112,7 @@ local treesitter = {
         node_decremental = "<bs>",
       },
     },
+    ignore_install = { "dockerfile" }, -- The Dockerfile parser is broken
   },
   config = function(_, opts)
     -- When opts is specified, Lazy automatically calls require("<plugin_name>").setup(opts) but with
