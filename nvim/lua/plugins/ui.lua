@@ -24,7 +24,7 @@ local bufferline = {
     {
       "<leader>bd",
       function()
-        -- The native bufdelete feature from Neovim causes with bufferline so we use a custom plugin
+        -- The native bufdelete feature from Neovim causes issues with bufferline so we use a custom plugin
         require("bufdelete").bufdelete()
       end,
       desc = "Delete current buffer",
@@ -50,17 +50,17 @@ local catppuccin = {
   opts = {
     no_italic = true,
     no_bold = true,
+    lsp_styles = {
+      underlines = {
+        errors = { "undercurl" },
+        hints = { "undercurl" },
+        warnings = { "undercurl" },
+        information = { "undercurl" },
+      },
+    },
     integrations = {
       lsp_trouble = true,
       mason = true,
-      native_lsp = {
-        underlines = {
-          errors = { "undercurl" },
-          hints = { "undercurl" },
-          warnings = { "undercurl" },
-          information = { "undercurl" },
-        },
-      },
       neotree = true,
       which_key = true,
     },
@@ -94,6 +94,7 @@ local lualine = {
 -- treesitter provides syntax highlighting and indenting
 local treesitter = {
   "nvim-treesitter/nvim-treesitter",
+  branch = "master",
   build = ":TSUpdate",
   dependencies = {
     -- Helm syntax highlighting
