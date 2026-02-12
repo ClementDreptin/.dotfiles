@@ -24,9 +24,10 @@ source $ZSH/oh-my-zsh.sh
 export VISUAL="nvim"
 export EDITOR="$VISUAL"
 
-# Setup the volta environment
-export VOLTA_HOME=$HOME/.volta
-export PATH=$VOLTA_HOME/bin:$PATH
+# Setup the NVM environment
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
 # Set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/.local/bin" ]; then

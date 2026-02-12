@@ -94,12 +94,31 @@ local lualine = {
 -- treesitter provides syntax highlighting and indenting
 local treesitter = {
   "nvim-treesitter/nvim-treesitter",
-  branch = "master",
-  build = ":TSUpdate",
+  lazy = false,
+  build = function()
+    -- nvim-treesitter relies on the tree-sitter cli so we install it via npm if needed
+    if vim.fn.executable("tree-sitter") == 0 then
+      local output = vim.fn.system({ "npm", "install", "-g", "tree-sitter-cli" })
+      if vim.v.shell_error ~= 0 then
+        vim.notify("Failed to install the tree-sitter-cli npm package:\n" .. output, vim.log.levels.ERROR)
+        return
+      end
+    end
+
+    -- Equivalent of running TSUpdate, we need to call the lua function directly because the TSUpdate
+    -- isn't yet available when this code runs
+    require("nvim-treesitter.install").update()
+  end,
   dependencies = {
     -- Helm syntax highlighting
-    { "towolf/vim-helm", ft = "helm" },
+    { "qvalentin/helm-ls.nvim", ft = "helm" },
   },
+}
+
+-- treesitter-modules replaces features that used to be built into nvim-treesitter like auto install
+-- incremental selection
+local treesittermodules = {
+  "MeanderingProgrammer/treesitter-modules.nvim",
   opts = {
     auto_install = true, -- Automatically install a parser when a new file type is encountered
     highlight = { enable = true },
@@ -113,13 +132,7 @@ local treesitter = {
         node_decremental = "<bs>",
       },
     },
-    ignore_install = { "dockerfile" }, -- The Dockerfile parser is broken
   },
-  config = function(_, opts)
-    -- When opts is specified, Lazy automatically calls require("<plugin_name>").setup(opts) but with
-    -- treesitter the path isn't just the module name so we need to manually call setup
-    require("nvim-treesitter.configs").setup(opts)
-  end,
 }
 
 return {
@@ -129,4 +142,5 @@ return {
   gitsigns,
   lualine,
   treesitter,
+  treesittermodules,
 }
