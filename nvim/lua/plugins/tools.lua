@@ -1,33 +1,56 @@
--- Open Lazygit from within Neovim
-local lazygit = {
-  "kdheepak/lazygit.nvim",
-  dependencies = { "nvim-lua/plenary.nvim" },
-  keys = {
-    { "<leader>gg", "<cmd>LazyGit<cr>", desc = "LazyGit" },
-  },
-}
-
--- neo-tree is a file explorer
-local neotree = {
-  "nvim-neo-tree/neo-tree.nvim",
-  branch = "v3.x",
-  dependencies = {
-    "nvim-lua/plenary.nvim",
-    "nvim-tree/nvim-web-devicons",
-    "MunifTanjim/nui.nvim",
-  },
+-- File explorer (based on snacks.nvim)
+local file_explorer = {
+  "folke/snacks.nvim",
+  priority = 1000,
+  lazy = false,
   opts = {
-    filesystem = {
-      filtered_items = {
-        visible = true,
-        hide_dotfiles = false,
-        never_show = { ".git" },
+    explorer = { enabled = true },
+    picker = {
+      sources = {
+        explorer = {
+          layout = {
+            auto_hide = { "input" }, -- Don't display search bar unless we press "/"
+          },
+        },
       },
-      follow_current_file = { enabled = true },
     },
   },
   keys = {
-    { "<leader>e", "<cmd>Neotree toggle<cr>", desc = "NeoTree" },
+    { "<leader>e", function() Snacks.explorer() end, desc = "File Explorer" },
+  },
+}
+
+-- Finder (Telescope replacement, based on snacks.nvim)
+local finder = {
+  "folke/snacks.nvim",
+  priority = 1000,
+  lazy = false,
+  opts = {
+    picker = {
+      enabled = true,
+      hidden = true,
+      ignored = true,
+      exclude = { ".git" },
+    },
+  },
+  keys = {
+    { "<leader>ff", function() Snacks.picker.files({ hidden = true }) end, desc = "Find files" },
+    { "<leader><space>", function() Snacks.picker.files({ hidden = true }) end, desc = "Find files" },
+    { "<leader>/", function() Snacks.picker.grep() end, desc = "Grep" },
+    { "<leader>xx", function() Snacks.picker.diagnostics() end, desc = "Diagnostics" },
+  },
+}
+
+-- Open Lazygit from within Neovim (based on snacks.nvim)
+local lazygit = {
+  "folke/snacks.nvim",
+  priority = 1000,
+  lazy = false,
+  opts = {
+    lazygit = { enabled = true },
+  },
+  keys = {
+    { "<leader>gg", function() Snacks.lazygit() end, desc = "LazyGit" },
   },
 }
 
@@ -38,79 +61,7 @@ local spectre = {
   cmd = "Spectre",
   opts = { open_cmd = "noswapfile vnew" },
   keys = {
-    {
-      "<leader>sr",
-      function()
-        require("spectre").open()
-      end,
-      desc = "Find and replace (Spectre)",
-    },
-  },
-}
-
--- telescope allows fuzzy finding in a convenient UI
-local telescope = {
-  {
-    "nvim-telescope/telescope.nvim",
-    dependencies = { "nvim-lua/plenary.nvim" },
-    opts = {
-      defaults = {
-        file_ignore_patterns = { ".git/" },
-      },
-    },
-    keys = {
-      {
-        "<leader>ff",
-        function()
-          require("telescope.builtin").find_files({ hidden = true })
-        end,
-        desc = "Find files",
-      },
-      {
-        "<leader><space>",
-        function()
-          require("telescope.builtin").find_files({ hidden = true })
-        end,
-        desc = "Find files",
-      },
-      {
-        "<leader>/",
-        function()
-          require("telescope.builtin").live_grep()
-        end,
-        desc = "Grep",
-      },
-    },
-  },
-
-  -- telescope-ui-select allows using the telescope UI for other things (like code actions)
-  {
-    "nvim-telescope/telescope-ui-select.nvim",
-    config = function()
-      local telescope = require("telescope")
-
-      telescope.setup({
-        extensions = {
-          ["ui-select"] = { require("telescope.themes").get_dropdown() },
-        },
-      })
-
-      telescope.load_extension("ui-select")
-    end,
-  },
-}
-
--- trouble displays a window with all the diagnostics in the workspace
-local trouble = {
-  "folke/trouble.nvim",
-  cmd = "Trouble",
-  opts = {},
-  keys = {
-    {
-      "<leader>xx",
-      "<cmd>Trouble diagnostics toggle<cr>",
-      desc = "Diagnostics (Trouble)",
-    },
+    { "<leader>sr", function() require("spectre").open() end, desc = "Find and replace (Spectre)" },
   },
 }
 
@@ -126,10 +77,9 @@ local which_key = {
 }
 
 return {
+  file_explorer,
+  finder,
   lazygit,
-  neotree,
   spectre,
-  telescope,
-  trouble,
   which_key,
 }

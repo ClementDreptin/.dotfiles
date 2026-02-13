@@ -57,38 +57,12 @@ local lsp_config = {
   {
     "neovim/nvim-lspconfig",
     keys = {
-      {
-        "<leader>cd",
-        vim.diagnostic.open_float,
-        desc = "Line diagnostics",
-      },
-      {
-        "<leader>K",
-        vim.lsp.buf.hover,
-        desc = "Hover",
-      },
-      {
-        "<leader>gd",
-        function()
-          require("telescope.builtin").lsp_definitions({ reuse_win = true })
-        end,
-        desc = "Go to definition",
-      },
-      {
-        "<leader>gr",
-        "<cmd>Telescope lsp_references<cr>",
-        desc = "References",
-      },
-      {
-        "<leader>ca",
-        vim.lsp.buf.code_action,
-        desc = "Code actions",
-      },
-      {
-        "<leader>cr",
-        vim.lsp.buf.rename,
-        desc = "Rename",
-      },
+      { "<leader>cd", vim.diagnostic.open_float, desc = "Line diagnostics" },
+      { "<leader>K", vim.lsp.buf.hover, desc = "Hover" },
+      { "<leader>gd", function() Snacks.picker.lsp_definitions() end, desc = "Go to definition" },
+      { "<leader>gr", function() Snacks.picker.lsp_references() end, desc = "References" },
+      { "<leader>ca", vim.lsp.buf.code_action, desc = "Code actions" },
+      { "<leader>cr", vim.lsp.buf.rename, desc = "Rename" },
     },
     config = function()
       -- Get the completion capabilities of cmp-nvim-lsp

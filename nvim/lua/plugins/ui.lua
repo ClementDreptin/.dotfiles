@@ -4,31 +4,19 @@ local bufferline = {
   event = "VeryLazy",
   dependencies = {
     "nvim-tree/nvim-web-devicons",
-    "famiu/bufdelete.nvim",
   },
   opts = {
     options = {
       diagnostics = "nvim_lsp", -- Change the buffer name color based on LSP diagnostics
       offsets = {
-        -- Offset the tab when neo-tree is open
-        {
-          filetype = "neo-tree",
-          text = "Neo-tree",
-          highlight = "Directory",
-          text_align = "left",
-        },
+        -- Offset the tab when the snacks explorer is open
+        { filetype = "snacks_layout_box" },
       },
     },
   },
   keys = {
-    {
-      "<leader>bd",
-      function()
-        -- The native bufdelete feature from Neovim causes issues with bufferline so we use a custom plugin
-        require("bufdelete").bufdelete()
-      end,
-      desc = "Delete current buffer",
-    },
+    -- The native bufdelete feature from Neovim causes issues with bufferline so we use a custom plugin
+    { "<leader>bd", function() Snacks.bufdelete.delete() end, desc = "Delete current buffer" },
     { "<S-h>", "<cmd>BufferLineCyclePrev<cr>", desc = "Previous buffer" },
     { "<S-l>", "<cmd>BufferLineCycleNext<cr>", desc = "Next buffer" },
     { "<A-h>", "<cmd>BufferLineMovePrev<cr>", desc = "Move previous buffer" },
@@ -37,7 +25,7 @@ local bufferline = {
   config = function(_, opts)
     -- Overwrite the default function that bufferline will call when trying to delete the buffer
     -- (when clicking on the "x" next to the buffer name) to fix alignment issues
-    opts.options.close_command = require("bufdelete").bufdelete
+    opts.options.close_command = Snacks.bufdelete.delete
     require("bufferline").setup(opts)
   end,
 }
@@ -72,16 +60,20 @@ local catppuccin = {
   end,
 }
 
--- dressin displays actions like renaming a variable is a popup menu
-local dressing = {
-  "stevearc/dressing.nvim",
-  opts = {},
-}
-
 -- gitsigns displays git related signs in the sign column (next to the line numbers)
 local gitsigns = {
   "lewis6991/gitsigns.nvim",
   opts = {},
+}
+
+-- Display inputs in popup windows (based on snacks.nvim)
+local inputs = {
+  "folke/snacks.nvim",
+  priority = 1000,
+  lazy = false,
+  opts = {
+    input = { enabled = true },
+  },
 }
 
 -- lualine recaps information about the current buffer at the bottom of the screen
@@ -117,7 +109,7 @@ local treesitter = {
 
 -- treesitter-modules replaces features that used to be built into nvim-treesitter like auto install
 -- incremental selection
-local treesittermodules = {
+local treesitter_modules = {
   "MeanderingProgrammer/treesitter-modules.nvim",
   opts = {
     auto_install = true, -- Automatically install a parser when a new file type is encountered
@@ -138,9 +130,9 @@ local treesittermodules = {
 return {
   bufferline,
   catppuccin,
-  dressing,
   gitsigns,
+  inputs,
   lualine,
   treesitter,
-  treesittermodules,
+  treesitter_modules,
 }
