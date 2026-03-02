@@ -8,7 +8,7 @@ NVIM_CFG_DIR=$USER_CFG_DIR/nvim
 
 # Download Neovim binary from GitHub and make it executable
 echo "Installing Neovim..."
-curl -Lo $NVIM_BIN https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
+curl -Lo $NVIM_BIN https://github.com/neovim/neovim/releases/download/v0.11.6/nvim-linux-x86_64.appimage
 chmod u+x $NVIM_BIN
 
 echo "Installing Neovim config..."
