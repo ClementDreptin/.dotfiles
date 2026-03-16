@@ -66,6 +66,25 @@ local gitsigns = {
   opts = {},
 }
 
+-- Display vertical lines to more easily visualize the indentation levels in yaml files (based on snacks.nvim)
+local indent = {
+  "folke/snacks.nvim",
+  priority = 1000,
+  lazy = false,
+  opts = {
+    indent = {
+      enabled = true,
+      animate = {
+        enabled = false,
+      },
+      filter = function(buf)
+        local filetype = vim.bo[buf].filetype
+        return filetype == "yaml" or filetype == "helm"
+      end,
+    },
+  },
+}
+
 -- Display inputs in popup windows (based on snacks.nvim)
 local inputs = {
   "folke/snacks.nvim",
@@ -131,6 +150,7 @@ return {
   bufferline,
   catppuccin,
   gitsigns,
+  indent,
   inputs,
   lualine,
   treesitter,
