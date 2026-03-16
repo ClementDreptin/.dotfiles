@@ -7,17 +7,6 @@ local servers = {
       },
     },
   },
-  eslint = {
-    flags = {
-      allow_incremental_sync = false,
-      debounce_text_changes = 1000,
-    },
-    settings = {
-      -- Make eslint find the config file when it's placed in a subdirectory, useful for monorepos
-      workingDirectories = { mode = "auto" },
-      format = false,
-    },
-  },
   biome = {},
   ts_ls = {},
   jsonls = {},
