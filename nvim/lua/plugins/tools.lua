@@ -14,6 +14,8 @@ local file_explorer = {
           layout = {
             auto_hide = { "input" }, -- Don't display search bar unless we press "/"
           },
+          ignored = true,
+          exclude = { ".git" },
         },
       },
     },
@@ -32,8 +34,6 @@ local finder = {
     picker = {
       enabled = true,
       hidden = true,
-      ignored = true,
-      exclude = { ".git" },
     },
   },
   keys = {
