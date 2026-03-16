@@ -11,15 +11,9 @@ USER_FONT_DIR=$HOME/.local/share/fonts
 # Script taken here:
 # https://github.com/mkasberg/ghostty-ubuntu#installupdate
 echo "Installing Ghostty..."
-source /etc/os-release
-GHOSTTY_DEB_URL=$(
-   curl -s https://api.github.com/repos/mkasberg/ghostty-ubuntu/releases/latest | \
-   grep -oP "https://github.com/mkasberg/ghostty-ubuntu/releases/download/[^\s/]+/ghostty_[^\s/_]+_amd64_${VERSION_ID}.deb"
-)
-GHOSTTY_DEB_FILE=/tmp/$(basename $GHOSTTY_DEB_URL)
-curl -L $GHOSTTY_DEB_URL -o $GHOSTTY_DEB_FILE
-sudo dpkg -i $GHOSTTY_DEB_FILE
-rm $GHOSTTY_DEB_FILE
+sudo add-apt-repository ppa:mkasberg/ghostty-ubuntu
+sudo apt update
+sudo apt install ghostty
 
 # The .deb file already adds an alternative for x-terminal-emulator so no need to add one manually
 echo "Setting Ghostty as the default terminal..."
