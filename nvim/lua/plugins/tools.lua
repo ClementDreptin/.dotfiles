@@ -4,7 +4,10 @@ local file_explorer = {
   priority = 1000,
   lazy = false,
   opts = {
-    explorer = { enabled = true },
+    explorer = {
+      enabled = true,
+      trash = false,
+    },
     picker = {
       sources = {
         explorer = {
