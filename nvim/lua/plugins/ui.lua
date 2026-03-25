@@ -117,7 +117,7 @@ local treesitter = {
     end
 
     -- Equivalent of running TSUpdate, we need to call the lua function directly because the TSUpdate
-    -- isn't yet available when this code runs
+    -- command isn't yet available when this code runs
     require("nvim-treesitter.install").update()
   end,
   dependencies = {
@@ -126,8 +126,8 @@ local treesitter = {
   },
 }
 
--- treesitter-modules replaces features that used to be built into nvim-treesitter like auto install
--- incremental selection
+-- treesitter-modules replaces features that used to be built into nvim-treesitter like auto install,
+-- incremental selection, etc.
 local treesitter_modules = {
   "MeanderingProgrammer/treesitter-modules.nvim",
   opts = {
