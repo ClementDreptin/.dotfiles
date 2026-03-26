@@ -47,9 +47,8 @@ local catppuccin = {
       },
     },
     integrations = {
-      lsp_trouble = true,
+      lualine = true,
       mason = true,
-      neotree = true,
       which_key = true,
     },
   },
