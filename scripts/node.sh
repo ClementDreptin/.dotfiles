@@ -14,3 +14,6 @@ fi
 # Install the latest node version with NVM
 echo "Installing node..."
 nvm install --lts
+
+# Install PNPM
+curl -fsSL https://get.pnpm.io/install.sh | sh -
