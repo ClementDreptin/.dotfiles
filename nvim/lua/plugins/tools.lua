@@ -49,6 +49,9 @@ local lazygit = {
   "folke/snacks.nvim",
   priority = 1000,
   lazy = false,
+  dependencies = {
+    "nvim-lua/plenary.nvim",
+  },
   opts = {
     lazygit = { enabled = true },
   },
