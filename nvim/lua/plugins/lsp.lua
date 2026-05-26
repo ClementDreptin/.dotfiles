@@ -20,6 +20,7 @@ local servers = {
     },
   },
   yamlls = {},
+  gopls = {},
 }
 
 -- All the config needed to make LSPs talk with the LSP client in Neovim
