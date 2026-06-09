@@ -13,6 +13,9 @@ local file_explorer = {
         explorer = {
           layout = {
             auto_hide = { "input" }, -- Don't display search bar unless we press "/"
+            layout = {
+              width = 30,
+            },
           },
           ignored = true,
           exclude = { ".git" },
