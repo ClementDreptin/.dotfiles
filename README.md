@@ -20,4 +20,5 @@ Scripts **HAVE** to be run in this order
 - [ghostty.sh](./scripts/ghostty.sh)
 - [node.sh](./scripts/node.sh)
 - [lazygit.sh](./scripts/lazygit.sh)
+- [kubernetes.sh](./scripts/kubernetes.sh)
 - [nvim.sh](./scripts/nvim.sh)
