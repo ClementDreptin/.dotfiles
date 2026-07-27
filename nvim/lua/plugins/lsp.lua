@@ -21,6 +21,7 @@ local servers = {
   },
   yamlls = {},
   gopls = {},
+  terraformls = {},
 }
 
 -- All the config needed to make LSPs talk with the LSP client in Neovim
