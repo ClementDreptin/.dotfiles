@@ -12,3 +12,6 @@ keymap.set("n", "<A-k>", "<cmd>m .-2<cr>==", { desc = "Move up" })
 
 -- Clear search highlight
 keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
+
+-- Treesitter incremental selection
+keymap.set("v", "<C-Space>", "an", { desc = "Incremental selection", remap = true })

@@ -2,7 +2,13 @@ local servers = {
   lua_ls = {
     settings = {
       Lua = {
-        workspace = { checkThirdParty = false },
+        diagnostics = {
+          globals = { "Snacks" },
+        },
+        workspace = {
+          checkThirdParty = false,
+          library = vim.api.nvim_get_runtime_file("", true),
+        },
         telemetry = { enable = false },
       },
     },

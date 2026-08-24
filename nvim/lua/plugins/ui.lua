@@ -55,14 +55,14 @@ local catppuccin = {
     custom_highlights = function(colors)
       return {
         -- The default NavicText hightlight foreground is blue and I'm not a fan
-        NavicText = { fg = colors.text }
+        NavicText = { fg = colors.text },
       }
     end,
   },
   config = function(_, opts)
     require("catppuccin").setup(opts)
 
-    vim.cmd.colorscheme("catppuccin")
+    vim.cmd.colorscheme("catppuccin-nvim")
   end,
 }
 
@@ -141,29 +141,38 @@ local treesitter = {
     -- command isn't yet available when this code runs
     require("nvim-treesitter.install").update()
   end,
+  config = function()
+    -- Start treesitter when opening a buffer with a filetype and auto-install
+    -- parsers for filetypes that we don't have a parser for yet.
+    vim.api.nvim_create_autocmd("FileType", {
+      group = vim.api.nvim_create_augroup("treesitter.setup", {}),
+      callback = function(args)
+        local buf = args.buf
+        local filetype = args.match
+
+        -- Check if the parser is installed.
+        local language = vim.treesitter.language.get_lang(filetype) or filetype
+        local is_installed = vim.treesitter.language.add(language)
+
+        -- If the parser is not installed, install it asynchronously and load
+        -- it on success.
+        if not is_installed then
+          require("nvim-treesitter").install(language):await(function(error)
+            if not error then
+              vim.treesitter.start(buf, language)
+            end
+          end)
+          return
+        end
+
+        -- Start treesitter for the buffer if the parser is already installed.
+        vim.treesitter.start(buf, language)
+      end,
+    })
+  end,
   dependencies = {
     -- Helm syntax highlighting
     { "qvalentin/helm-ls.nvim", ft = "helm" },
-  },
-}
-
--- treesitter-modules replaces features that used to be built into nvim-treesitter like auto install,
--- incremental selection, etc.
-local treesitter_modules = {
-  "MeanderingProgrammer/treesitter-modules.nvim",
-  opts = {
-    auto_install = true, -- Automatically install a parser when a new file type is encountered
-    highlight = { enable = true },
-    indent = { enable = true },
-    incremental_selection = {
-      enable = true,
-      keymaps = {
-        init_selection = "<C-space>",
-        node_incremental = "<C-space>",
-        scope_incremental = false,
-        node_decremental = "<bs>",
-      },
-    },
   },
 }
 
@@ -176,5 +185,4 @@ return {
   lualine,
   navic,
   treesitter,
-  treesitter_modules,
 }
