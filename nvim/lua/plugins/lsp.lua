@@ -14,7 +14,7 @@ local servers = {
     },
   },
   biome = {},
-  ts_ls = {},
+  tsc = {},
   jsonls = {},
   helm_ls = {
     settings = {
