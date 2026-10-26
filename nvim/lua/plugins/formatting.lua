@@ -8,23 +8,19 @@ local conform = {
   event = { "BufWritePre" }, -- Don't load until a file is written
   cmd = { "ConformInfo" },
   opts = function()
-    -- We use biome if it's available locally, and fallback to prettier otherwise
-    local has_biome_exe = vim.fn.executable("node_modules/.bin/biome")
-    local web_formatter_to_use = has_biome_exe ~= 0 and "biome-check" or "prettierd"
-
     return {
       formatters_by_ft = {
         lua = { "stylua" },
-        javascript = { web_formatter_to_use, stop_after_first = true },
-        typescript = { web_formatter_to_use, stop_after_first = true },
-        javascriptreact = { web_formatter_to_use, stop_after_first = true },
-        typescriptreact = { web_formatter_to_use, stop_after_first = true },
-        html = { web_formatter_to_use, stop_after_first = true },
-        css = { web_formatter_to_use, stop_after_first = true },
-        json = { web_formatter_to_use, stop_after_first = true },
-        jsonc = { web_formatter_to_use, stop_after_first = true },
-        yaml = { "prettierd" },
-        markdown = { "prettierd" },
+        javascript = { "biome-check" },
+        typescript = { "biome-check" },
+        javascriptreact = { "biome-check" },
+        typescriptreact = { "biome-check" },
+        html = { "biome-check" },
+        css = { "biome-check" },
+        json = { "biome-check" },
+        jsonc = { "biome-check" },
+        yaml = { "biome-check" },
+        markdown = { "biome-check" },
       },
       format_on_save = function(bufnr)
         -- Don't format if setting is disabled
@@ -47,18 +43,18 @@ local conform = {
 }
 
 -- Command to toggle format on save
-vim.api.nvim_create_user_command("ToggleFormatOnSave", function()
-  vim.g.format_on_save = not vim.g.format_on_save
-end, {
-  desc = "Toggle format on save",
-})
+vim.api.nvim_create_user_command(
+  "ToggleFormatOnSave",
+  function() vim.g.format_on_save = not vim.g.format_on_save end,
+  { desc = "Toggle format on save" }
+)
 
 -- mason-tool-installer makes sure tools referenced in mason are installed. This plugin is needed
 -- because the ensure_installed option from mason-lspconfig only supports LSPs
 local mason_tool_installer = {
   "WhoIsSethDaniel/mason-tool-installer.nvim",
   opts = {
-    ensure_installed = { "prettierd", "stylua" },
+    ensure_installed = { "stylua" },
   },
 }
 

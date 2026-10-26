@@ -15,7 +15,7 @@ opt.clipboard = "unnamedplus"
 opt.signcolumn = "yes"
 
 -- Indentation
-opt.tabstop = 2 -- 2 spaces for tabs (prettier default)
+opt.tabstop = 2 -- 2 spaces for tabs
 opt.shiftwidth = 2 -- 2 spaces for indent width
 opt.expandtab = true -- Expand tab to spaces
 opt.autoindent = true -- Copy indent from current line when starting new one
